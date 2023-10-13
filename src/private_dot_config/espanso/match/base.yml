@@ -1,0 +1,54 @@
+matches:
+  # SYMBOLS
+  - trigger: ';eur'
+    replace: '€'
+
+  - trigger: ';gbp'
+    replace: '£'
+
+  - trigger: ';cny'
+    replace: '¥'
+
+  - trigger: ';btc'
+    replace: '฿'
+
+  - trigger: ';(c)'
+    replace: '©'
+
+  - trigger: ';(tm)'
+    replace: '™'
+
+  - trigger: ';deg'
+    replace: '°'
+
+  - trigger: ';inf'
+    replace: '∞'
+
+  # SSH
+  - trigger: ';pubkey'
+    replace: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDZcWN1O4xGvF8oKiMXOfB0i7hO9P/ChD6yM5NRn3ZZsUxpAYrE1E86x5KvIipGKXZ0l907ECPb3pZHmSR4kXSu9jGXaHGTsrn/guVrMYkwXCA5JIjhfdQGoMyM8Isdb5+itj+h58LrOihK3whI8ycuCKXzov7m+wxO+0G+QCQcLRCTb2TtKy845M/RvLxImBj8sKP6YMlXJA25h/9BXGr56lGm8DaceFSUBRDjscOABs0zJlphiA+p0UhenpdpgbmnxMStdsUmES7klAN+LDdNxYpvWMre8Ged+IuHaHgMCnaLCiojmIMZV6XQGvXP34KQtBdHDtlTqBGjiT+UgZ2Ow44J+IIgYzgfGzI00dfEbUWvtWaE1u+J+15p8Vz6XTW4llqq9aBud3IDdy3/s7QxdGZFJFa4MoQ57I5dhtm9owHsan5a3lfd73TjUfxCh7XOwVsfKrZHrpAviAlnnoIO+NN1hx82JzlEMVObRRVjtTXV/Q0VAc3ZPfp5TWIqvsI1NuINedFTdqHPV5bZu7JNebe4TuACCYDeYEpG3nn666YF0so0X4waSoWDmuLBndbw/MbD3WSyikDr39RSzTCVd/HeinIjIBoAcg1DDugCttXFP2gMhNUtLU1HIrZnkZrXYfZ8L42lVSXT5HA+J7XRYS+cNQ31um7nZRwMhoysNQ=='
+
+  - trigger: ';sshkeysetup'
+    replace: >
+      echo "Enter the remote username: " &&
+      read remote_username &&
+      echo "Enter the remote server address: " &&
+      read remote_address &&
+      echo "Enter your SSH public key: " &&
+      read ssh_pubkey &&
+      ssh $remote_username@$remote_address "mkdir -p ~/.ssh &&
+      echo '$ssh_pubkey' >> ~/.ssh/authorized_keys &&
+      chmod 700 ~/.ssh &&
+      chmod 600 ~/.ssh/authorized_keys &&
+      sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config &&
+      service ssh restart"
+
+  # CHATGPT PROMPTS
+  - trigger: ';re'
+    replace: 'Please restructure the presented sentence, ensuring the amendment of any grammatical inconsistencies and the augmentation of vocabulary where suitable, while demonstrating a sophisticated mastery of the English language. : '
+
+  - trigger: ';co'
+    replace: 'I want you to assume the role of a highly proficient code optimizer. Please review the code and identify any comments that contain grammatical errors. For each comment that you find, correct any grammatical errors, rephrase it to use a sophisticated level of English proficiency, and ensure that the comment accurately reflects the purpose or intent of the code. Please do not change any variable names or remove any ANSI escape characters. Once done, present the full modified code by breaking it down into multiple blocks. It is crucial that each block does not exceed 15 lines. Always ask me for permission before proceeding to the subsequent block.'
+
+  - trigger: ';sum'
+    replace: 'Please compose a numbered list of key takeaways and distinctive points from the subsequent text that encapsulate its most valuable and exceptional aspects:'

@@ -1,0 +1,152 @@
+##############################################################
+# ~/brewfile - Software Installs for macOS                  #
+#                                                            #
+# List of packages to be installed/updated via Homebrew      #
+# Apps are sorted by category and arranged alphabetically.   #
+# Be sure to delete or comment out anything you do not need. #
+# Usage: run $ brew bundle install $HOME/brewfile           #
+# See Brew's documentation for more information:             #
+# https://docs.brew.sh/Manpage                               #
+#                                                            #
+##############################################################
+
+# Options
+cask_args appdir: '~/Applications', require_sha: true
+
+# Taps
+tap 'homebrew/bundle'
+tap 'homebrew/cask-fonts'
+
+#############################################################
+# CLI                                                       #
+#############################################################
+
+# Command-line tools
+brew 'age'                     # Simple, modern, secure file encryption
+brew 'bash'                    # Bourne-Again Shell, a UNIX command interpreter
+brew 'bat'                     # Syntax highlighting for file viewing
+brew 'coreutils'               # GNU core utilities
+brew 'curl'                    # Get a file from an HTTP, HTTPS or FTP server
+brew 'eza'                     # A modern, maintained replacement for 'ls,' built on 'exa.'
+brew 'exiftool'                # Read/write/modify Exif data
+brew 'fzf'                     # Fuzzy finder for the command-line
+brew 'git'                     # Version control
+brew 'git-lfs'                 # Git Large File Storage for large files
+brew 'gmp'                     # GNU Multiple Precision Arithmetic Library
+brew 'gnu-sed'                 # GNU 'sed' (stream editor)
+brew 'grep'                    # GNU 'grep' for powerful text pattern matching
+brew 'jq'                      # JSON parser/query tool
+brew 'openssh'                 # OpenSSH for secure remote access
+brew 'pigz'                    # Parallel gzip for faster file compression
+brew 'screen'                  # Terminal multiplexing
+brew 'thefuck'                 # Auto-correct mistyped commands
+brew 'tldr'                    # Community-driven man pages
+brew 'tokei'                   # Code line counter (improves 'cloc')
+brew 'tree'                    # Directory listings as a tree structure
+brew 'zoxide'                  # A faster way to navigate your filesystem
+
+# Monitoring and performance tools
+brew 'btop'                    # Resource monitor
+brew 'ctop'                    # Container metrics and monitoring
+brew 'dog'                     # DNS lookup client (improves 'dig')
+brew 'dua-cli'                 # Disk usage analyzer (improves 'du')
+brew 'duf'                     # Disk usage utility with more features
+brew 'gping'                   # Interactive ping tool with a graph
+
+# Zsh plugins
+brew 'zsh-autosuggestions'     # Zsh autosuggestions
+brew 'zsh-syntax-highlighting' # Zsh syntax highlighting
+
+# Productivity command-line apps
+brew 'rclone'                  # Manage cloud storage
+
+# Useful command-line tools
+brew 'neofetch'                # Display system and distro info
+brew 'pv'                      # Pipe viewer with animation options
+
+#############################################################
+# Software Development                                      #
+#############################################################
+
+# Development applications
+cask 'boop'                    # Text transformation tool
+cask 'fork'                    # Git client
+cask 'visual-studio-code'      # Code editor
+brew 'wrk'                     # HTTP benchmarking tool
+
+# DevOps tools
+brew 'docker'                  # Containers
+
+# Programming languages, compilers, and SDKs
+brew 'cmake'                   # Cross-platform make
+brew 'gcc'                     # GNU C++ compilers
+brew 'go'                      # Go Lang compiler
+brew "qt"                      # Cross-platform application and UI framework
+brew "qt@5"                    # Cross-platform application and UI framework
+brew 'python'                  # Python interpreter
+brew 'rust'                    # Rust programming language
+
+# Development utilities
+brew 'gh'                      # GitHub interaction
+brew 'git-extras'              # Extra Git commands
+brew 'terminal-notifier'       # Trigger macOS notifications
+brew 'ttygif'                  # Generate GIF from terminal output
+brew 'watchman'                # File system watcher for development servers
+
+# Security utilities and data encryption
+brew 'lynis'                   # System security scanning
+brew 'openssl'                 # Cryptography and SSL/TLS Toolkit
+cask 'suspicious-package'      # Inspect macOS packages
+cask 'veracrypt'               # File and volume encryption
+
+#############################################################
+# Desktop Applications                                      #
+#############################################################
+
+# Communication
+cask 'discord'                 # Voice and text chat software
+cask 'telegram'                # Messaging app with a focus on speed and security
+cask 'wechat'                  # Chinese social media app
+cask 'whatsapp'                # Native desktop client for WhatsApp
+
+# Content Download and Management Tools
+cask 'qbittorrent'             # Peer-to-peer BitTorrent client
+brew 'youtube-dl'              # Download YouTube videos from the command-line
+
+# E-Book and Reading
+cask 'calibre'                 # E-books management software
+brew 'pandoc'                  # Swiss-army knife of markup format conversion
+cask 'thorium'                 # Epub reader
+
+# File Management Tools
+cask 'a-better-finder-rename'  # File renaming utility
+cask 'daisydisk'               # Disk space visualizer
+cask 'find-any-file'           # File search utility
+cask 'macfuse'                 # FUSE file system support for macOS
+
+# Network and Security
+cask 'cloudflare-warp'         # Cloudflare WARP VPN
+cask 'little-snitch'           # Firewall app for traffic monitoring
+cask 'santa'                   # Binary authorization system
+cask 'wireshark'               # Network protocol analyzer
+
+# Productivity
+brew 'busycal'                 # The Best Calendar App for macOS
+cask 'espanso'                 # Live text expander (cross-platform)
+cask 'maccy'                   # Clipboard manager (cross-platform)
+cask 'notion'                  # Note-taking and collaboration
+cask 'numi'                    # Calculator app
+cask 'trex'                    # Easy-to-use text extraction tool
+
+# System monitoring and utilities
+cask 'kitty'                   # Kitty Terminal Emulator
+brew 'm-cli'                   # Swiss Army Knife for macOS
+cask 'pictogram'               # Customize and maintain app icons
+cask 'sloth'                   # Displays all open files and sockets in use by all running processes
+cask 'soundsource'             # Sound and audio controller
+cask 'tg-pro'                  # Temperature monitoring, fan control, and diagnostics
+
+# Web browsers
+cask 'brave-browser'           # Web browser focusing on privacy
+
+# EOF
