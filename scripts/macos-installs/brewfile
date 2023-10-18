@@ -38,6 +38,7 @@ brew 'grep'                    # GNU 'grep' for powerful text pattern matching
 brew 'jq'                      # JSON parser/query tool
 brew 'openssh'                 # OpenSSH for secure remote access
 brew 'pigz'                    # Parallel gzip for faster file compression
+brew 'procs'                   # Modern replacement for ps written by Rust
 brew 'screen'                  # Terminal multiplexing
 brew 'thefuck'                 # Auto-correct mistyped commands
 brew 'tldr'                    # Community-driven man pages
@@ -46,6 +47,7 @@ brew 'tree'                    # Directory listings as a tree structure
 brew 'zoxide'                  # A faster way to navigate your filesystem
 
 # Monitoring and performance tools
+brew 'bandwhich'               # Terminal bandwidth utilization tool
 brew 'btop'                    # Resource monitor
 brew 'ctop'                    # Container metrics and monitoring
 brew 'dog'                     # DNS lookup client (improves 'dig')
@@ -89,6 +91,7 @@ brew 'rust'                    # Rust programming language
 # Development utilities
 brew 'gh'                      # GitHub interaction
 brew 'git-extras'              # Extra Git commands
+brew 'scc'                     # Fast and accurate code counter with complexity and COCOMO estimates
 brew 'terminal-notifier'       # Trigger macOS notifications
 brew 'ttygif'                  # Generate GIF from terminal output
 brew 'watchman'                # File system watcher for development servers
@@ -112,6 +115,9 @@ cask 'whatsapp'                # Native desktop client for WhatsApp
 # Content Download and Management Tools
 cask 'qbittorrent'             # Peer-to-peer BitTorrent client
 brew 'youtube-dl'              # Download YouTube videos from the command-line
+
+# Cryptocurrencies
+brew 'cointop'                 # Interactive terminal based UI application for tracking cryptocurrencies
 
 # E-Book and Reading
 cask 'calibre'                 # E-books management software
