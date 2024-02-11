@@ -1,0 +1,49 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+set -eufo pipefail
+
+if [[ ! -d ~/Pictures/Wallpapers ]]; then
+   mkdir -p ~/Pictures/Wallpapers
+fi
+
+curl -o ~/Pictures/Wallpapers/purple_nebula.png -L "https://github.com/iamnhx/assets/blob/main/wallpapers/purple_nebula.png?raw=true"
+
+if [ ! -f ~/Pictures/Wallpapers/purple_nebula.png ]; then
+    echo "Error: Downloaded file not found"
+    exit 1
+fi
+
+osascript -e 'tell application "System Events" to set picture of every desktop to ("~/Pictures/Wallpapers/purple_nebula.png" as POSIX file)'
+
+echo "Checking for Xcode CLI..."
+if pkgutil --pkg-info com.apple.pkg.CLTools_Executables >/dev/null 2>&1; then
+    echo "Xcode CLI tools OK"
+else
+    echo "Xcode CLI tools not found. Installing them..."
+    touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+    xcodeCommandLineTools=$(/usr/sbin/softwareupdate --list 2>&1 | \
+        /usr/bin/awk -F: '/Label: Command Line Tools for Xcode/ {print $NF}' | \
+        /usr/bin/sed 's/^ *//' | \
+        /usr/bin/tail -1)
+    softwareupdate -i "$xcodeCommandLineTools" --agree-to-license
+fi
+
+{{ if (and (eq .chezmoi.os "darwin") (eq .chezmoi.arch "arm64")) }}
+echo "Installing Rosetta..."
+softwareupdate --install-rosetta --agree-to-license
+{{ end }}
+
+echo "Checking for Homebrew..."
+if [[ $(command -v brew) ]]; then
+    echo "Homebrew already installed"
+    brew -v
+else
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> ~/.zprofile
+    eval $(/opt/homebrew/bin/brew shellenv)
+fi
+
+brew bundle install --file {{ joinPath .chezmoi.sourceDir "brewfile" }}
+{{ end -}}

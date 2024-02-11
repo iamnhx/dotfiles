@@ -1,0 +1,78 @@
+{{- if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+
+LIME='\033[0;32m'
+RESET_COLOR='\033[0m'
+
+function patch_appcleaner() {
+	xxd -p -c 0 "$1/Contents/MacOS/App Cleaner 8" - | \
+	sed "s/a0c24039bfc20039/20008052a0c20039/; \
+	     s/9b0a003460420291/9b0a003560420291/; \
+	     s/418b7c243041c644243000/bf0100000041c644243001/; \
+	     s/4584ff0f846e010000/4584ff0f856e010000/; " | \
+	xxd -r -p -c 0 - "$1/Contents/MacOS/App Cleaner 8"
+	codesign -f -s - "$1" && xattr -c -r "$1"
+	echo -e "${LIME}OK!${RESET_COLOR}"
+}; patch_appcleaner "/Applications/App Cleaner 8.app"
+
+function patch_bartender() {
+	xxd -p -c 0 "$1/Contents/MacOS/Bartender 5" - | \
+	sed "s/0000805296010014/2000805296010014/; \
+	     s/31c0e98e060000/b001e98e060000/" | \
+    	xxd -r -p -c 0 - "$1/Contents/MacOS/Bartender 5"
+    	codesign -f -s - "$1" && xattr -c -r "$1"
+	echo -e "${LIME}OK!${RESET_COLOR}"
+}; patch_bartender "/Applications/Bartender 5.app"
+
+function patch_devonthink() {
+   	 find ~/Library/ -maxdepth 1 -type f -name '*.lcf' -exec rm -f {} \; 2>/dev/null
+   	 find ~/Library/Application\ Support/ -maxdepth 1 -type f -name '*.guvax3' -exec rm -f {} \; 2>/dev/null
+  	 find ~/Library/Preferences/ -maxdepth 1 -type f -name '*.guvax3' -exec rm -f {} \; 2>/dev/null
+   	 plist_content="<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">
+<plist version=\"1.0\">
+<dict>
+    <key>Data</key>
+    <data>
+    Orobp28TY2GCum17fmi/PSUy3QlJMFIlmN22YH+2mjWyrHls6DTaFbxcsDzF8aNm4Y44
+    29Ph0E/L1BX766jwpCNPfHWhACKuBzt2XCK9Y4VfJJTxW5Fq+0CFhtXv31WApVobC6Ef
+    oikrv6WQeRaGT4+qxmUULbTN1bWYe7H966JwdH7gwZsbJomFP1E63LE30q7BWzRfsp9U
+    1FvZ+34rH0DuYyQHR+0MSaW+fF86TTHw+s8/5UiZ1DEpweeiNScSaHvD00aflVpjV1cm
+    ulzam8kBKTw/Jk2O7iXVP3dSmHFyCMYrTFRIBXpvjzv8XR0cndSCOSscf8VQ3IpY3Ks4
+    QYqYrRXU/sFE7Jos4sg0+QxSi5+kAkQSppUraBq8jMqMfPreJAnEpyRPgPbWSI0fxJkC
+    jcIqXaLqpL9m6X+Wx/wQx1U6LxjRLUM0yes3tR3fY58V29YTktvfsCwZVTju3qZiSdyB
+    P4+s3JQYm3tgsX99LPNzq8Z94hawHOpZ/c6T2IDVlMwxiq5GsnfwbgamXKSFNaCkBxuI
+    a6u6Flm7XL889lSZVcxHRVRMnBqNZXQXsZ85I+NC64WcKI7/g03F+H9VzdDKAo6fCrjo
+    47eHgCX2l3HedWo6L64AnykBETiKr4ybgKQWXrr6BNsIMHJO/c0AhThgEiPZ36ixHh/A
+    AJ6Az3kXCS7WCNMauXkE3n/sjumg5NEY+6yXbjRKoBWHTHwF5+mRG90BJYZURXqriABN
+    aJjZOTMQEYZ5+xwshB0H5HKHt7H18ThX237TVTnRtldkJGqP2R8S5OWrRwzNzZGCO6uh
+    8SrfOSCHYud0RFMupfrSa86l8rbaX1lcYUmjKRo4RoySKmGASoI6fw8/+629nQtKzdsH
+    d7Gbnod/c5+zW9gSqgvQtN11VnR6CaUgaatzJjXAnNg7HdjC1215w+u1ssMbI1vl9XIo
+    yKGXYtGQqEO9sC1p0MqjmJmbvvel63wqH3qJ0MvippeSJzf259M=
+    </data>
+</dict>
+</plist>"
+   	mkdir -p "$HOME/Library/Application Support/DEVONthink 3"
+    	echo "$plist_content" > ~/Library/Application\ Support/DEVONthink\ 3/Registration.plist
+	echo "Injecting DEVONthink's license data"
+	echo -e "${LIME}OK!${RESET_COLOR}"
+}; patch_devonthink
+
+function patch_forklift() {
+	xxd -p -c 0 "$1/Contents/MacOS/Forklift" - | \
+	sed "s/f30314aafa0300aa/f30314aa1a0080d2/; s/4c896dd089fb/4c896dd0b300/; \
+	     s/0000805216000014/6000805216000014/; s/4531f6eb53/41b603eb53/; " | \
+	xxd -r -p -c 0 - "$1/Contents/MacOS/Forklift"
+	codesign -f -s - "$1" && xattr -c -r "$1"
+	echo -e "${LIME}OK!${RESET_COLOR}"
+}; patch_forklift "/Applications/ForkLift.app"
+
+function patch_movist_pro() {
+	xxd -p -c 0 "$1/Contents/MacOS/Movist Pro" - | 
+	sed "s/730000b4f40313aa09/1f2003d5f40313aa09/; 
+	     s/74054d89e6eb274c/66904d89e6eb274c/;" | 
+	xxd -r -p -c 0 - "$1/Contents/MacOS/Movist Pro"
+	codesign -f -s - "$1" && xattr -c -r "$1"
+	echo -e "${LIME}OK!${RESET_COLOR}"
+}; patch_movist_pro "/Applications/Movist Pro.app"
+{{ end -}}

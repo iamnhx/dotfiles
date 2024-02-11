@@ -1,0 +1,58 @@
+# Load and initialize command completion
+autoload -U compinit && compinit
+
+# Configure case-insensitive matching for command completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Initialize zoxide for directory navigation
+eval "$(zoxide init zsh)"
+
+# Set up an alias for 'thefuck' command correction tool
+eval $(thefuck --alias)
+
+# Source Powerlevel10k Zsh theme for custom prompt configuration
+source ~/.powerlevel10k/powerlevel10k.zsh-theme
+
+# Source Powerlevel10k configuration
+source ~/.p10k.zsh
+
+# Source Git Extras completion for enhanced Git functionality
+source /opt/homebrew/opt/git-extras/share/git-extras/git-extras-completion.zsh
+
+# Source Zsh syntax highlighting script for command syntax highlighting
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# History settings
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=5000
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt incappendhistory
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Use Homebrew's curl
+alias curl='/opt/homebrew/opt/curl/bin/curl'
+
+# Finding files and directories
+alias ff='find . -type f -name' 
+alias fd='find . -type d -name'
+
+# Listing of directories with icons
+alias l='eza -aF --icons'
+alias ll='eza -laF --icons'
+
+# List files with permissions
+alias lsp='ls -lvAh --color | awk -F"\t" "{k=0; for(i=0;i<=8;i++) k+=((substr(\$1,i+2,1)~/[rwx]/)*2^(8-i)); if(k) printf \"%0o\t%s\n\", k, \$NF}"'
+
+# System Maintenance and Utilities
+alias fp="ping -i 0.1 10.0.0.1"
+alias mu="mas upgrade && ~/bin/macupdater/main"
+alias rls="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
+
+# External Services
+alias wx="curl -s \"wttr.in/$(curl -s ipinfo.io | jq -r '.city')\" | grep -v -E '\x1B\[46m\x1B\[30m@igor_chubin\x1B\[0m for wttr\.in updates'"
