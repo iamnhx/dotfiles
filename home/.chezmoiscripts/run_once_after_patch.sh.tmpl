@@ -75,4 +75,16 @@ function patch_movist_pro() {
 	codesign -f -s - "$1" && xattr -c -r "$1"
 	echo -e "${LIME}OK!${RESET_COLOR}"
 }; patch_movist_pro "/Applications/Movist Pro.app"
+
+function patch_pdfexpert() {
+    xxd -p -c 0 "$1/Contents/MacOS/PDF Expert" | \
+    sed -E "s/20010037b5060091/09000014b5060091/; \
+             s/150080d2e00314aae10315aafd7b44a9/350080d2e00314aae10315aafd7b44a9/; \
+             s/8002001206000014/2000805206000014/; \
+             s/00008052fd7b47a9f44f46a9f65745a9f85f44a9fa6743a9fc6f42a9/20008052fd7b47a9f44f46a9f65745a9f85f44a9fa6743a9fc6f42a9/" | \
+    xxd -r -p -c 0 - "$1/Contents/MacOS/PDF Expert"
+    codesign -f -s - "$1" && xattr -c -r "$1"
+    echo -e "${LIME}OK!${RESET_COLOR}"
+}
+patch_pdfexpert "/Applications/PDF Expert.app"
 {{ end -}}
