@@ -129,7 +129,6 @@ cask 'metaimage'                                            # Editor to read, wr
 
 # Network and Security
 cask 'little-snitch'                                        # Firewall app for traffic monitoring
-cask 'santa'                                                # Binary authorization system
 
 # Productivity
 cask 'anki'                                                 # Memory training application
