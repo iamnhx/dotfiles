@@ -69,8 +69,8 @@ function patch_forklift() {
 
 function patch_movist_pro() {
 	xxd -p -c 0 "$1/Contents/MacOS/Movist Pro" - | 
-	sed "s/730000b4f40313aa09/1f2003d5f40313aa09/; 
-	     s/74054d89e6eb274c/66904d89e6eb274c/;" | 
+	sed "s/f8600000b4f30300aa0a/f81f2003d5f30300aa0a/; 
+	     s/74054889fbeb29/66904d89fbeb29/;" | 
 	xxd -r -p -c 0 - "$1/Contents/MacOS/Movist Pro"
 	codesign -f -s - "$1" && xattr -c -r "$1"
 	echo -e "${LIME}OK!${RESET_COLOR}"
