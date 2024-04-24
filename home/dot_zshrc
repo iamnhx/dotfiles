@@ -51,7 +51,7 @@ alias lsp='ls -lvAh --color | awk -F"\t" "{k=0; for(i=0;i<=8;i++) k+=((substr(\$
 
 # System Maintenance and Utilities
 alias fp="ping -i 0.1 10.0.0.1"
-alias mu="mas upgrade && ~/bin/macupdater/main"
+alias mu="mas upgrade && ~/bin/macupdater/core"
 alias rls="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
 
 # External Services
