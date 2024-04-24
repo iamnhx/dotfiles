@@ -76,7 +76,8 @@ brew 'gcc'                                                  # GNU C++ compilers
 brew 'go'                                                   # Go Lang compiler
 brew "qt"                                                   # Cross-platform application and UI framework
 brew "qt@5"                                                 # Cross-platform application and UI framework
-brew 'python'                                               # Python interpreter
+brew 'python-tk'                                            # Python bindings for Tcl/Tk
+brew 'poetry'                                               # Python dependency management and packaging tool
 brew 'rust'                                                 # Rust programming language
 
 # Development utilities
