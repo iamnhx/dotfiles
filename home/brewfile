@@ -113,7 +113,7 @@ brew 'cointop'                                              # Interactive termin
 
 # E-Book and Reading
 brew 'pandoc'                                               # Swiss-army knife of markup format conversion
-cask 'thorium'                                              # Epub reader
+cask 'fbreader'                                             # Epub reader
 
 # Entertainment
 cask 'movist-pro'                                           # Media player
@@ -155,7 +155,7 @@ cask 'soundsource', args: { require_sha: false }            # Sound and audio co
 cask 'tg-pro'                                               # Temperature monitoring, fan control, and diagnostics
 
 # Web browsers
-cask 'floorp'                                               # Web browser focusing on privacy
+cask 'brave-browser'                                        # Web browser focusing on privacy
 
 #############################################################
 # Others                                                    #
