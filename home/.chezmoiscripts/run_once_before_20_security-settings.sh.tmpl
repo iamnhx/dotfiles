@@ -37,7 +37,7 @@ RESET_COLOR='\033[0m'
 
 # Current and total tasks, used for progress updates
 current_event=0
-total_events=32
+total_events=31
 
 if [ ! "$(uname -s)" = "Darwin" ]; then
   echo -e "${PRIMARY_COLOR}Incompatible System${RESET_COLOR}"
@@ -243,10 +243,6 @@ echo 'yes' | sudo systemsetup -setremotelogin off
 # Disable insecure TFTP service
 log_msg "Disable insecure TFTP service"
 sudo launchctl disable 'system/com.apple.tftpd'
-
-# Disable Bonjour multicast advertising
-log_msg "Disable Bonjour multicast advertising"
-sudo defaults write /Library/Preferences/com.apple.mDNSResponder.plist NoMulticastAdvertisements -bool true
 
 # Disable insecure telnet protocol
 log_msg "Disable insecure telnet protocol"
