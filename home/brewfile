@@ -68,7 +68,8 @@ cask 'visual-studio-code'                                   # Code editor
 brew 'wrk'                                                  # HTTP benchmarking tool
 
 # DevOps tools
-brew 'docker'                                               # Containers
+cask 'docker'                                               # Containers
+brew 'docker-compose'                                       # Isolated development environments using Docker
 
 # Programming languages, compilers, and SDKs
 brew 'cmake'                                                # Cross-platform make
@@ -133,11 +134,11 @@ cask 'little-snitch'                                        # Firewall app for t
 
 # Productivity
 cask 'anki'                                                 # Memory training application
+cask 'anytype'                                              # Local-first and end-to-end encrypted notes app
 cask 'busycal'                                              # The Best Calendar App for macOS
 cask 'espanso'                                              # Live text expander (cross-platform)
 cask 'hovrly'                                               # Display and convert timezones time in different cities
 cask 'maccy'                                                # Clipboard manager (cross-platform)
-cask 'anytype'                                              # Local-first and end-to-end encrypted notes app
 cask 'numi'                                                 # Calculator app
 cask 'swish'                                                # Control windows and applications right from your trackpad
 cask 'trex'                                                 # Easy-to-use text extraction tool
