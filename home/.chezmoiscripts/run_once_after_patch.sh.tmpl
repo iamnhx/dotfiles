@@ -60,7 +60,7 @@ function patch_devonthink() {
 
 function patch_forklift() {
 	xxd -p -c 0 "$1/Contents/MacOS/Forklift" - | \
-	sed "s/4c896dd089fb/4c896dd0b300/; s/4531f6eb75/41b603eb75/; \
+	sed "s/4531f6eb75/41b603eb75/; s/4c896dd04189fe/4c896dd0b30090/; \
 	     s/f30314aafa0300aa/f30314aa1a0080d2/; s/000080521f000014/600080521f000014/; " | \
 	xxd -r -p -c 0 - "$1/Contents/MacOS/Forklift"
 	codesign -f -s - "$1" && xattr -c -r "$1"
