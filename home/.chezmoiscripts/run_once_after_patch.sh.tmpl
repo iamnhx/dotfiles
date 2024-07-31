@@ -6,10 +6,10 @@ RESET_COLOR='\033[0m'
 
 function patch_appcleaner() {
 	xxd -p -c 0 "$1/Contents/MacOS/App Cleaner 8" - | \
-	sed "s/a0c24039bfc20039/20008052a0c20039/; \
-	     s/9b0a003460420291/9b0a003560420291/; \
-	     s/418b7c243041c644243000/bf0100000041c644243001/; \
-	     s/4584ff0f846e010000/4584ff0f856e010000/; " | \
+	sed "s/e00313aae10314aafd7b43a9f44f42a9ff030191c0035fd6ffc300d1fd7b02a9/e00313aae10314aafd7b43a9f44f42a9ff030191c0035fd6200080d2c0035fd6/; \
+	     s/4889d84c89f24883c4205b415e5dc30f1f440000554889e54883ec20/4889d84c89f24883c4205b415e5dc30f1f44000048c7c001000000c3/; \
+	     s/0914200020d4f44fbea9/0914200020d4c0035fd6/; \
+	     s/3e000f0b662e0f1f840000000000554889e5415550/3e000f0b662e0f1f840000000000c34889e5415550/; " | \
 	xxd -r -p -c 0 - "$1/Contents/MacOS/App Cleaner 8"
 	codesign -f -s - "$1" && xattr -c -r "$1"
 	echo -e "${LIME}OK!${RESET_COLOR}"
