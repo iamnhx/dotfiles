@@ -17,12 +17,12 @@ function patch_appcleaner() {
 
 function patch_bartender() {
 	xxd -p -c 0 "$1/Contents/MacOS/Bartender 5" - | \
-	sed "s/0000805296010014/2000805296010014/; \
-	     s/31c0e98e060000/b001e98e060000/" | \
+	sed "s/00008052d6010014/20008052d6010014/" | \
     	xxd -r -p -c 0 - "$1/Contents/MacOS/Bartender 5"
     	codesign -f -s - "$1" && xattr -c -r "$1"
 	echo -e "${LIME}OK!${RESET_COLOR}"
 }; patch_bartender "/Applications/Bartender 5.app"
+
 
 function patch_devonthink() {
    	 find ~/Library/ -maxdepth 1 -type f -name '*.lcf' -exec rm -f {} \; 2>/dev/null
