@@ -111,6 +111,7 @@ brew 'youtube-dl'                                           # Download YouTube v
 
 # Cryptocurrencies
 brew 'cointop'                                              # Interactive terminal based UI application for tracking cryptocurrencies
+cask 'sparrow'                                              # Sparrow Bitcoin Wallet
 
 # E-Book and Reading
 brew 'pandoc'                                               # Swiss-army knife of markup format conversion
@@ -131,6 +132,7 @@ cask 'metaimage'                                            # Editor to read, wr
 
 # Network and Security
 cask 'little-snitch'                                        # Firewall app for traffic monitoring
+cask 'gpg-suite-no-mail'                                    # Tools to protect your files
 
 # Productivity
 cask 'anki'                                                 # Memory training application
