@@ -6,6 +6,7 @@ cask_args appdir: '/Applications', require_sha: true
 # Taps
 tap 'homebrew/bundle'
 tap 'homebrew/cask-fonts'
+tap 'alienator88/homebrew-cask'
 
 #############################################################
 # CLI                                                       #
@@ -129,6 +130,7 @@ cask 'forklift'                                             # Finder replacement
 cask 'keka'                                                 # File archiver and compression tool
 cask 'macfuse'                                              # FUSE file system support for macOS
 cask 'metaimage'                                            # Editor to read, write and edit images metadata
+cask 'sentinel-app', args: { require_sha: false }           # A GUI for controlling Gatekeeper, unquarantining apps and more.
 
 # Network and Security
 cask 'little-snitch'                                        # Firewall app for traffic monitoring
